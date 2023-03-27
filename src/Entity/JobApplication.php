@@ -14,31 +14,20 @@ class JobApplication
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $job_offer_id = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $candidate_message = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_added = null;
 
+    #[ORM\ManyToOne]
+    private ?JobOffer $job_offer_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getJobOfferId(): ?int
-    {
-        return $this->job_offer_id;
-    }
-
-    public function setJobOfferId(int $job_offer_id): self
-    {
-        $this->job_offer_id = $job_offer_id;
-
-        return $this;
-    }
 
     public function getCandidateMessage(): ?string
     {
@@ -60,6 +49,18 @@ class JobApplication
     public function setDateAdded(\DateTimeInterface $date_added): self
     {
         $this->date_added = $date_added;
+
+        return $this;
+    }
+
+    public function getJobOfferId(): ?JobOffer
+    {
+        return $this->job_offer_id;
+    }
+
+    public function setJobOfferId(?JobOffer $job_offer_id): self
+    {
+        $this->job_offer_id = $job_offer_id;
 
         return $this;
     }
