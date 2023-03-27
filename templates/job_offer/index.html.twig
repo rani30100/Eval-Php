@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JobOfferController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<nav class="navbar navbar-expand-lg">
+		<div class="container-fluid">
+			<a class="navbar-brand text-white" href="#">Espace Personnel |</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active text-white" aria-current="page" href="#">Accueil</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<section class="offer d-flex justify-content-center ">
+		<div class="card">
+			<div class="card-body">
+				<h3>Titre de l'offre</h3>
+				<hr>
+				<p class="card-text">Vous travaillerez en équipe pour la saison avec port de charges lourdes :
+					                    chargement et déchargement de marchandises, 
+					                    livraison possible il faut donc le permis B obligatoirement.
+					                    Vous pourrez servir les clients ou les aider
+					                    les horaires 7h 12h - 14h 18 h et le samedi 7 h 12 heures
+					                    Le planning fait tourner les repos dont le samedi qui se travaille en équipe.
+					                    2 jours de repos par semaine
+					                    Pas de possibilité de faire travailler un mineur car la législation l'interdit.
+					                    Poste à pourvoir pour le mois de mai et jusqu'à fin août..</p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item text-start">Département</li>
+				<li class="list-group-item text-start">Salaire</li>
+				<li class="list-group-item text-start">Date d'ajout / Date de Fin</li>
+				<li class="list-group-item text-start">Poste Occupé</li>
+			</ul>
+		</div>
+
+        <section class="d-block"></section>
+		<form action="">
+			<div class="mb-3">
+				<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">e sss</textarea>
+			</div>
+		</form>
+	</section>
+
+{% endblock %}
