@@ -1,0 +1,34 @@
+{% set title = "Liste des Offres" %}
+{% extends 'admin_with_table.html.twig' %}
+
+{% block title %}Offers index{% endblock %}
+
+{% block body %}
+    <h1>Liste des Offres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offer in offers %}
+            <tr>
+                <td>{{ offer.id }}</td>
+                <td>
+                    <a href="{{ path('app_admin_offers_show', {'id': offer.id}) }}">Afficher</a>
+                    <a href="{{ path('app_admin_offers_edit', {'id': offer.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_offers_new') }}" class="btn-success">Créer une offre</a>
+{% endblock %}

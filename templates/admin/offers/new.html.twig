@@ -1,0 +1,12 @@
+{% set cancel_route = "app_admin_offers_index" %}
+{% set title = "Ajouter une offre" %}
+{% extends 'admin_with_form.html.twig' %}
+{% block title %}New Offers{% endblock %}
+
+{% block body %}
+    <h1>Create new Offers</h1>
+
+    {{ include('admin/offers/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_offers_index') }}">back to list</a>
+{% endblock %}
