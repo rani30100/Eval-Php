@@ -62,11 +62,14 @@ h2 {
 }
 
 .card {
-  height: 600px;
   margin: 0 auto;
   margin: 50px;
 }
 
 .offer {
   height: 100vh;
+}
+
+.section-offre {
+  height: 600px;
 }/*# sourceMappingURL=style.css.map */

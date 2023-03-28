@@ -20,10 +20,14 @@
         "symfony/runtime": "6.2.*",
         "symfony/security-csrf": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
+        "symfony/ux-live-component": "^2.7",
+        "symfony/ux-twig-component": "^2.7",
         "symfony/validator": "6.2.*",
         "symfony/yaml": "6.2.*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "fakerphp/faker": "^1.21",
         "symfony/maker-bundle": "^1.48"
     },
     "config": {

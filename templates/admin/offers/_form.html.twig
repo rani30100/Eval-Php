@@ -1,4 +1,19 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-      <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_start(form, {'attr': {'class': 'form'}}) }}
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.Date_added) }}
+        {{ form_widget(form.Date_added, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.expiration_date) }}
+        {{ form_widget(form.expiration_date, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn btn-success mt-4">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

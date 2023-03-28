@@ -1,13 +1,32 @@
-{% extends 'base.html.twig' %}
+{% set cancel_route = "app_admin_offers_index" %}
+{% set title = "Modifier l'Offre" %}
+{% extends 'admin_with_form.html.twig' %}
 
-{% block title %}Edit Offers{% endblock %}
+{% block title %}Edit Offers
+{% endblock %}
 
-{% block body %}
-    <h1>Edit Offers</h1>
+{% block forms %}
 
-    {{ include('admin/offers/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('admin/offers/_delete_form.html.twig', {'button_label': 'Supprimer'}) }}
+	{{ include('admin/offers/_form.html.twig', {'button_label': 'Update'}) }}
+    
 
-    <a href="{{ path('app_admin_offers_index') }}">back to list</a>
+	<a href="{{ path('app_admin_offers_index') }}" class="btn btn-warning mt-3">Retour </a>
 
-    {{ include('admin/offers/_delete_form.html.twig') }}
+	<section class="section-offre">
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
+			{% for offers in offer %}
+				<div class="col getCards">
+					<div class="btn card mb-5 rounded-4 image cards w-400 h-300">
+						<div class="card-body overflow-hidden">
+							<h5 class="card-title text-center text-justify fs-5 text-success">{{offers.title}}</h5>
+							<p class="card-text">{{offers.description}}</p>
+						</div>
+					</div>
+
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	
 {% endblock %}

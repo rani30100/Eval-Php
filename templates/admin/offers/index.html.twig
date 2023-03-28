@@ -1,34 +1,44 @@
 {% set title = "Liste des Offres" %}
 {% extends 'admin_with_table.html.twig' %}
 
-{% block title %}Offers index{% endblock %}
+{% block title %}Offers index
+{% endblock %}
 
-{% block body %}
-    <h1>Liste des Offres</h1>
+{% block table_content %}
+	<a href="{{ path('app_admin_offers_new') }}" class="btn btn-outline-success">Créer une offre</a>
+	<table class="table">
+		<thead>
+			<tr>
+				{# <th>Id</th> #}
+                <th>Titre de l'offre</th>
+				<th>Description</th>
+				<th>Date d'ajout</th>
+				<th>Date d'expiration</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for offer in offers %}
+				<tr>
+					{# <td>{{ offer.id }}</td> #}
+                    <td>{{ offer.title }}</td>
+					<td>{{ offer.description }}</td>
+					<td>{{ offer.dateAdded|date("m/d/y") }}</td>
+					<td>{{ offer.expirationDate|date("m/d/y") }}</td>
+					<td>
+						<a href="{{ path('app_admin_offers_edit', {'id': offer.id}) }}" class="btn btn-outline-secondary mb-2">Modifier</a>
+						<form class="text-start pb-3" method="post" action="{{ path('app_admin_offers_delete', {'id': offer.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ offer.id) }}">
+							<button class="btn btn-danger ">Supprimer</button>
+						</form>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="2">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for offer in offers %}
-            <tr>
-                <td>{{ offer.id }}</td>
-                <td>
-                    <a href="{{ path('app_admin_offers_show', {'id': offer.id}) }}">Afficher</a>
-                    <a href="{{ path('app_admin_offers_edit', {'id': offer.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_admin_offers_new') }}" class="btn-success">Créer une offre</a>
 {% endblock %}
