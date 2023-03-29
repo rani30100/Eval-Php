@@ -1,8 +1,4 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello JobOfferController!
-{% endblock %}
-
 {% block body %}
 	<style>
 		.example-wrapper {
@@ -32,22 +28,23 @@
 			</div>
 		</div>
 	</nav>
-{% for offers in offer %}
+{% if offer %}
 	<section class="offer ">
 		<div class="card">
 			<div class="card-body">
-				<h3>{{offers.title}}</h3>
+				<h3>{{offer.title}}</h3>
 				<hr>
-				<p class="card-text">{{offers.description}}</p>
+				<p class="card-text">{{offer.description|raw}}</p>
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item text-start">Département</li>
-				<li class="list-group-item text-start">Salaire</li>
-				<li class="list-group-item text-start">Date d'ajout / Date de Fin</li>
-				<li class="list-group-item text-start">Poste Occupé</li>
+				<li class="list-group-item text-start">Cette offre se situe dans le {{offer.department|raw}}.</li>
+				<li class="list-group-item text-start">Salaire {{offer.department|raw}}</li>
+				<li class="list-group-item text-start">Vous serez en {{offer.type}} pour ce poste.</li>
+				<li class="list-group-item text-start">Annonce posté le : {{offer.getDateAdded()|date('Y-m-d')}}</li>
+				<li class="list-group-item text-start">Cette offre expire le  : {{offer.getExpirationDate()|date('Y-m-d')}}</li>
 			</ul>
 		</div>
-{% endfor %}
+{% endif %}
 	<section>
 		<form action="" class="d-flex justify-content-center">
 			<div class="mb-3 border p-3">

@@ -47,7 +47,6 @@ class OffersRepository extends ServiceEntityRepository
         if (!empty($criteria['type'])) {
             $qb
                 ->andWhere('o.type = :type')
-
                 ->setParameter('type', $criteria['type']);
         }
 
