@@ -4,7 +4,9 @@ namespace App\Form;
 
 
 use App\Entity\Offers;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,8 +21,25 @@ class OffersType extends AbstractType
         ->add('title',TextType::class, [
             'label' => "Nom de l'offre"
         ])
-        ->add('description', TextareaType::class, [
+        ->add('department', ChoiceType::class, [
+            'choices'=>[
+                'Gard'=> 'Gard',
+                'Vaucluse'=> 'Vaucluse',
+                'Bouches-du-Rhône'=> 'Bouches-du-Rhône',
+                'Var'=>'Var',
+                'Loire'=>'Loire',
+            ]
+        ])
+        ->add('description', CKEditorType::class, [
             'label' => 'Description'
+        ])
+        ->add('type', ChoiceType::class, [
+            'choices'=>[
+                'CDI'=> 'CDI',
+                'CDD'=> 'CDD',
+                'Intérim'=> 'Intérim',
+                'Alternance'=>'Alternance'
+            ]
         ])
         ->add("Date_added",  DateType::class, [
             'label' => "Date d'ajout",

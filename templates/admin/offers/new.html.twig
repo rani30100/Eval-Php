@@ -3,10 +3,9 @@
 {% extends 'admin_with_form.html.twig' %}
 {% block title %}New Offers{% endblock %}
 
-{% block body %}
-    <h1>Create new Offers</h1>
+{% block forms %}
 
     {{ include('admin/offers/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_offers_index') }}">back to list</a>
+    	<a href="{{ path('app_admin_offers_index') }}" class="btn btn-warning mt-3">Retour </a>
 {% endblock %}

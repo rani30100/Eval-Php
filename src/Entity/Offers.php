@@ -21,11 +21,18 @@ class Offers
     #[ORM\Column(type: Types::TEXT)]
     private ?string $Description = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+    
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $Date_added = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $expiration_date = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $department = null;
+
 
     public function getId(): ?int
     {
@@ -82,6 +89,30 @@ class Offers
     public function __toString()
     {
         return $this->Title;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getDepartment(): ?string
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(string $department): self
+    {
+        $this->department = $department;
+
+        return $this;
     }
     
 }

@@ -41,49 +41,67 @@
 			</div>
 		</nav>
 		<main>
-			<section class="search">
-				<div class="d-flex justify-center">
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-						<button class="btn btn-outline-secondary" type="button" id="button-addon2">Rechercher</button>
+			<div class="bg-body-tertiary">
+				<section class="search shadow p-3 mb-5 bg-body-tertiary rounded mt-2">
+					<div class="d-flex">
+						<select class="form-select custom-select element border-2 " aria-label="Default select example">
+							<option selected> Date de création</option>
+							<option value="1">CDI</option>
+							<option value="2">CDD</option>
+							<option value="3">Intérim</option>
+							<option value="3">Alternance</option>
+						</select>
+						<select class="form-select custom-select element border-2" aria-label="Default select example">
+							<option selected> Contrat</option>
+							<option value="1">CDI</option>
+							<option value="2">CDD</option>
+							<option value="3">Intérim</option>
+							<option value="3">Alternance</option>
+						</select>
+					
 					</div>
-				</div>
-				<select class="form-select custom-select-50 element" aria-label="Default select example">
-					<option selected> Type d'Offres</option>
-					<option value="1">CDI</option>
-					<option value="2">CDD</option>
-					<option value="3">Intérim</option>
-					<option value="3">Alternance</option>
+					<div class="d-flex justify-content-center">
+						<div class="input-group mb-3">
+							<input type="text" class="form-control border-2" placeholder="Rechercher une offre" aria-label="Recipient's username" aria-describedby="button-addon2">
+							<button class="btn btn-outline-secondary" type="button" id="button-addon2">Rechercher</button>
+						</div>
+				</section>
+			</div>	
+
+			<section class="my-offers ">
+				<select class="form-select custom-select element mb-2 border border-2" aria-label="Default select example">
+					<option selected>Trier Par</option>
+					<option value="1">Ordre Croissant</option>
 				</select>
-			</section>
 
-			<h2 class="element">Nombres d'offres - Departement</h2>
-			<select class="form-select custom-select-50 element" aria-label="Default select example">
-				<option selected>Trier Par</option>
-				<option value="1">Ordre Croissant</option>
-			</select>
-			{# {% for offer in offers %} #}
-			<div class="d-flex flex-row border border-2 border-dark-subtle btn offre rounded-3">
-				<div class="img">
-					<img src="img/logo.png" alt="">
-				</div>
+				<h2 class="color element">Nombres d'offres | Villes</h2>
+		
+				{% for offer in offers %}
+				{# {% for offer in offers %} #}
+				<div class="d-flex flex-row border border-2 border-dark-subtle btn offre rounded-3 shadow-sm p-3 mb-5">
+					<div class="img">
+						<img src="img/logo.png" alt="">
+					</div>
 
-				<div class="text-start">
-					<h3>Titre de l'offre</h3>
-					<p>Département</p>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet quidem harum expedita ex qui vitae molestiae distinctio quae reiciendis.</p>
-					<p>Salaire</p>
-					<div class="d-flex flex-row justify-content-lg-around">
-						<p>Date d'ajout</p>
-						<p>Date de fin</p>
+					<div class="text-start">
+						<h3>{{offer.title}}</h3>
+						<p>Département | {{offer.department}}</p>
+						<p>{{offer.description|raw}}</p>
+						
+							<p class="fw-bold">Date de mise en ligne : {{offer.getDateAdded()|date('Y-m-d')}}</p>
+							<p class="fw-bold">Cett offre expire le : {{offer.getExpirationDate()|date('Y-m-d')}}</p>
+					
+					</div>
+					<div class="poste">
+						<h6>Poste Occupé</h6>
+						<p>{{offer.type}}</p>
 					</div>
 				</div>
-				<div class="poste">
-					<h6>Poste Occupé</h6>
-					<p>CDI</p>
-				</div>
-			</div>
-			{# {% endfor %} #}
+				{% endfor %}
+			
+			
+			
+			</section>
 		</main>
 
 

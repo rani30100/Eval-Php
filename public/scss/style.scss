@@ -1,3 +1,6 @@
+$color: #ff5950;
+
+
 body{
   height: 100vh;
     main{
@@ -6,8 +9,8 @@ body{
     }
   }
 
-.custom-select-50 {
-  width: 150px;
+.custom-select {
+  width: 200px;
 }
 
 .li {
@@ -15,13 +18,11 @@ body{
 }
 
 .navbar {
-  background-color: #ff5950;
+  background-color: $color;
   ;
 }
 
-h2 {
-  color: #ff5950;
-}
+
 
 .border {
   border: 3px solid black;
@@ -72,4 +73,15 @@ h2 {
 
 .section-offre{
   height: 600px;
+}
+.my-offers{
+  height: 100vh;
+ 
+}
+
+.my-widht{
+  width: 100%;
+}
+.color{
+  color:$color
 }

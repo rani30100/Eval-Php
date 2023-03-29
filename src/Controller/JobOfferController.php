@@ -15,4 +15,6 @@ class JobOfferController extends AbstractController
             'controller_name' => 'JobOfferController',
         ]);
     }
+
+
 }

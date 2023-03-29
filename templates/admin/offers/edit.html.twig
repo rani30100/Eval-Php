@@ -11,9 +11,8 @@
 	{{ include('admin/offers/_form.html.twig', {'button_label': 'Update'}) }}
     
 
-	<a href="{{ path('app_admin_offers_index') }}" class="btn btn-warning mt-3">Retour </a>
 
-	<section class="section-offre">
+	
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
 			{% for offers in offer %}
 				<div class="col getCards">
@@ -27,6 +26,7 @@
 				</div>
 			{% endfor %}
 		</div>
-	</section>
+	<a href="{{ path('app_admin_offers_index') }}" class="btn btn-warning mt-5">Retour </a>
+	
 	
 {% endblock %}

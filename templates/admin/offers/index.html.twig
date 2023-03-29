@@ -12,6 +12,8 @@
 				{# <th>Id</th> #}
                 <th>Titre de l'offre</th>
 				<th>Description</th>
+				<th>Département</th>
+				<th>Type d'emploi</th>
 				<th>Date d'ajout</th>
 				<th>Date d'expiration</th>
 			</tr>
@@ -22,6 +24,8 @@
 					{# <td>{{ offer.id }}</td> #}
                     <td>{{ offer.title }}</td>
 					<td>{{ offer.description }}</td>
+					<td>{{ offer.department }}</td>
+					<td>{{ offer.type}}</td>
 					<td>{{ offer.dateAdded|date("m/d/y") }}</td>
 					<td>{{ offer.expirationDate|date("m/d/y") }}</td>
 					<td>

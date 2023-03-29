@@ -8,6 +8,14 @@
         {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
+        {{ form_label(form.type) }}
+        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    </div>
+        <div class="form-group">
+        {{ form_label(form.department) }}
+        {{ form_widget(form.department, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
         {{ form_label(form.Date_added) }}
         {{ form_widget(form.Date_added, {'attr': {'class': 'form-control'}}) }}
     </div>

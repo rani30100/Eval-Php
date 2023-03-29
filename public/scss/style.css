@@ -6,8 +6,8 @@ body main {
   margin-right: 30px;
 }
 
-.custom-select-50 {
-  width: 150px;
+.custom-select {
+  width: 200px;
 }
 
 .li {
@@ -16,10 +16,6 @@ body main {
 
 .navbar {
   background-color: #ff5950;
-}
-
-h2 {
-  color: #ff5950;
 }
 
 .border {
@@ -72,4 +68,16 @@ h2 {
 
 .section-offre {
   height: 600px;
+}
+
+.my-offers {
+  height: 100vh;
+}
+
+.my-widht {
+  width: 100%;
+}
+
+.color {
+  color: #ff5950;
 }/*# sourceMappingURL=style.css.map */
