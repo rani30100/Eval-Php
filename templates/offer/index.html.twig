@@ -32,21 +32,13 @@
 			</div>
 		</div>
 	</nav>
-
+{% for offers in offer %}
 	<section class="offer ">
 		<div class="card">
 			<div class="card-body">
-				<h3>Titre de l'offre</h3>
+				<h3>{{offers.title}}</h3>
 				<hr>
-				<p class="card-text">Vous travaillerez en équipe pour la saison avec port de charges lourdes :
-					                    chargement et déchargement de marchandises, 
-					                    livraison possible il faut donc le permis B obligatoirement.
-					                    Vous pourrez servir les clients ou les aider
-					                    les horaires 7h 12h - 14h 18 h et le samedi 7 h 12 heures
-					                    Le planning fait tourner les repos dont le samedi qui se travaille en équipe.
-					                    2 jours de repos par semaine
-					                    Pas de possibilité de faire travailler un mineur car la législation l'interdit.
-					                    Poste à pourvoir pour le mois de mai et jusqu'à fin août..</p>
+				<p class="card-text">{{offers.description}}</p>
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item text-start">Département</li>
@@ -55,7 +47,7 @@
 				<li class="list-group-item text-start">Poste Occupé</li>
 			</ul>
 		</div>
-
+{% endfor %}
 	<section>
 		<form action="" class="d-flex justify-content-center">
 			<div class="mb-3 border p-3">

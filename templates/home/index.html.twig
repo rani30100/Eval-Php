@@ -71,12 +71,12 @@
 								{{offer.getDateAdded()|date('Y-m-d')}}</p>
 							<p class="fw-bold">Cett offre expire le :
 								{{offer.getExpirationDate()|date('Y-m-d')}}</p>
-							<span class="btn btn-outline-warning"><a href="/job/offer" class="stretched-link color">Voir l'offre</a></span>
+							<span class="btn btn-outline-warning"><a class="stretched-link color" href="{{ path('app_job_offer', {'id': offer.id}) }}" >Postulez</a></span>
 							 
 
 						</div>
 						<div class="poste">
-							<h6>Poste Occupé</h6>
+							<h6>Poste à pourvoir</h6>
 							<p>{{offer.type}}</p>
 						</div>
 					</div>
@@ -96,4 +96,7 @@ console.log("heyy");
 event.target.form.submit();
 }
 
-type.addEventListener('change', onChange);</script></body></html>
+type.addEventListener('change', onChange);
+</script>
+</body>
+</html>

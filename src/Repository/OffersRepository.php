@@ -47,12 +47,14 @@ class OffersRepository extends ServiceEntityRepository
         if (!empty($criteria['type'])) {
             $qb
                 ->andWhere('o.type = :type')
+
                 ->setParameter('type', $criteria['type']);
         }
 
         if (!empty($criteria['department'])) {
             $qb
                 ->andWhere('o.department = :department')
+
                 ->setParameter('department', $criteria['department']);
         }
 
@@ -63,8 +65,8 @@ class OffersRepository extends ServiceEntityRepository
              ;
          }
 
-        return $qb
-            ->getQuery();
+            $qb->orderBy('o.id','DESC')    ;
+        return $qb->getQuery();
     }
 
         //  if(!empty($criteria['search'])){

@@ -15,6 +15,13 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(OffersRepository $offersRepository, PaginatorInterface $paginator, Request $request): Response
     {
+
+        $offerId = $request->query->get('offerId');
+
+        if ($offerId !== null) {
+            return $this->redirect('/offres/' . $offerId);
+        }
+    
         $form = $this->createForm(OffersSearchType::class);
         // $offers = $offersRepository->findAll();
 
@@ -26,7 +33,7 @@ class HomeController extends AbstractController
         $pagination = $paginator->paginate(
             $offersRepository->findByExampleField($criteria ?? []),
             $request->query->getInt('page', 1), /*page number*/
-            2 /*limit per page*/
+            4 /*limit per page*/
         );
 
         return $this->render('home/index.html.twig', [
