@@ -24,87 +24,96 @@
 	</head>
 	<body>
 		{% block body %}
-		
-		<nav class="navbar navbar-expand-lg">
-			<div class="container-fluid">
-				<a class="navbar-brand text-white" href="#">Espace Personnel |</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link active text-white" aria-current="page" href="#">Accueil</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<main>
-			<div class="bg-body-tertiary">
-				<section class="search shadow p-3 mb-5 bg-body-tertiary rounded mt-2">
-					<div class="d-flex">
-						<select class="form-select custom-select element border-2 " aria-label="Default select example">
-							<option selected> Date de création</option>
-							<option value="1">CDI</option>
-							<option value="2">CDD</option>
-							<option value="3">Intérim</option>
-							<option value="3">Alternance</option>
-						</select>
-						<select class="form-select custom-select element border-2" aria-label="Default select example">
-							<option selected> Contrat</option>
-							<option value="1">CDI</option>
-							<option value="2">CDD</option>
-							<option value="3">Intérim</option>
-							<option value="3">Alternance</option>
-						</select>
-					
+
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<a class="navbar-brand text-white" href="#">Espace Personnel |</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active text-white" aria-current="page" href="#">Accueil</a>
+							</li>
+						</ul>
 					</div>
-					<div class="d-flex justify-content-center">
-						<div class="input-group mb-3">
-							<input type="text" class="form-control border-2" placeholder="Rechercher une offre" aria-label="Recipient's username" aria-describedby="button-addon2">
-							<button class="btn btn-outline-secondary" type="button" id="button-addon2">Rechercher</button>
+				</div>
+			</nav>
+			<main>
+				<div class="bg-body-tertiary">
+					<section class="search shadow p-3 mb-5 bg-body-tertiary rounded mt-2">
+						<div class="d-flex">
+							<select class="form-select custom-select element border-2 " aria-label="Default select example">
+								<option selected>
+									Date de création</option>
+								<option value="1">CDI</option>
+								<option value="2">CDD</option>
+								<option value="3">Intérim</option>
+								<option value="3">Alternance</option>
+							</select>
+							<select class="form-select custom-select element border-2" aria-label="Default select example">
+								<option selected>
+									Département</option>
+								<option value="1">Gard</option>
+								<option value="2">Vaucluse</option>
+								<option value="3">Bouches-du-Rhône</option>
+								<option value="4">Var</option>
+								<option value="5">Loire</option>
+							</select>
+
 						</div>
-				</section>
-			</div>	
-
-			<section class="my-offers ">
-				<select class="form-select custom-select element mb-2 border border-2" aria-label="Default select example">
-					<option selected>Trier Par</option>
-					<option value="1">Ordre Croissant</option>
-				</select>
-
-				<h2 class="color element">Nombres d'offres | Villes</h2>
-		
-				{% for offer in offers %}
-				{# {% for offer in offers %} #}
-				<div class="d-flex flex-row border border-2 border-dark-subtle btn offre rounded-3 shadow-sm p-3 mb-5">
-					<div class="img">
-						<img src="img/logo.png" alt="">
+						<div class="d-flex justify-content-center">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control border-2" placeholder="Rechercher une offre" aria-label="Recipient's username" aria-describedby="button-addon2">
+								<button class="btn btn-outline-secondary" type="button" id="button-addon2">Rechercher</button>
+							</div>
+						</section>
 					</div>
 
-					<div class="text-start">
-						<h3>{{offer.title}}</h3>
-						<p>Département | {{offer.department}}</p>
-						<p>{{offer.description|raw}}</p>
-						
-							<p class="fw-bold">Date de mise en ligne : {{offer.getDateAdded()|date('Y-m-d')}}</p>
-							<p class="fw-bold">Cett offre expire le : {{offer.getExpirationDate()|date('Y-m-d')}}</p>
-					
-					</div>
-					<div class="poste">
-						<h6>Poste Occupé</h6>
-						<p>{{offer.type}}</p>
-					</div>
-				</div>
-				{% endfor %}
-			
-			
-			
-			</section>
-		</main>
+					<section class="my-offers ">
+						<select class="form-select custom-select element mb-2 border border-2" aria-label="Default select example">
+							<option selected>Trier Par</option>
+							<option value="1">Ordre Croissant</option>
+						</select>
+
+						<h2 class="color element">Nombres d'offres | Villes</h2>
+
+						{% for offer in offers %}
+							{# {% for offer in offers %} #}
+							<div class="d-flex flex-row border border-2 border-dark-subtle btn offre rounded-3 shadow-sm p-3 mb-5">
+								<div class="img">
+									<img src="img/logo.png" alt="">
+								</div>
+
+								<div class="text-start">
+									<h3>{{offer.title}}</h3>
+									<p>Département |
+										{{offer.department}}</p>
+									<p>{{offer.description|raw}}</p>
+
+									<p class="fw-bold">Date de mise en ligne :
+										{{offer.getDateAdded()|date('Y-m-d')}}</p>
+									<p class="fw-bold">Cett offre expire le :
+										{{offer.getExpirationDate()|date('Y-m-d')}}</p>
+
+								</div>
+								<div class="poste">
+									<h6>Poste Occupé</h6>
+									<p>{{offer.type}}</p>
+								</div>
+							</div>
+						{% endfor %}
 
 
-		{% endblock %}
+					<div class="navigation d-flex justify-content-center">
+						{{ knp_pagination_render(pagination) }}
+					</div>
+					</section>
+				</main>
+
+
+			{% endblock %}
+		</body>
 	</body>
 </html></body></html>
