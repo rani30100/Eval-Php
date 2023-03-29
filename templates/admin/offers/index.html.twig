@@ -14,6 +14,7 @@
 				<th>Description</th>
 				<th>Département</th>
 				<th>Type d'emploi</th>
+				<th>Salaire</th>
 				<th>Date d'ajout</th>
 				<th>Date d'expiration</th>
 			</tr>
@@ -26,6 +27,7 @@
 					<td>{{ offer.description }}</td>
 					<td>{{ offer.department }}</td>
 					<td>{{ offer.type}}</td>
+					<td>{{offer.salary/100|number_format(2, '.', '')}}€</td>
 					<td>{{ offer.dateAdded|date("m/d/y") }}</td>
 					<td>{{ offer.expirationDate|date("m/d/y") }}</td>
 					<td>

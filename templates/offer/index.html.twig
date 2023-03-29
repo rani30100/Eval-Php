@@ -15,14 +15,14 @@
 
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
-			<a class="navbar-brand text-white" href="#">Espace Personnel |</a>
+			<a class="navbar-brand text-white" >Espace Personnel |</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active text-white" aria-current="page" href="#">Accueil</a>
+						<a class="nav-link active text-white" aria-current="page" href={{ path_home }}>Accueil</a>
 					</li>
 				</ul>
 			</div>
@@ -33,25 +33,28 @@
 		<div class="card">
 			<div class="card-body">
 				<h3>{{offer.title}}</h3>
-				<hr>
+			
 				<p class="card-text">{{offer.description|raw}}</p>
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item text-start">Cette offre se situe dans le {{offer.department|raw}}.</li>
-				<li class="list-group-item text-start">Salaire {{offer.department|raw}}</li>
-				<li class="list-group-item text-start">Vous serez en {{offer.type}} pour ce poste.</li>
+				<li class="list-group-item text-start">Salaire : {{offer.salary/100|number_format(2, '.', '')}}€</li>
+				<li class="list-group-item text-start">Poste : {{offer.type}}</li>
 				<li class="list-group-item text-start">Annonce posté le : {{offer.getDateAdded()|date('Y-m-d')}}</li>
 				<li class="list-group-item text-start">Cette offre expire le  : {{offer.getExpirationDate()|date('Y-m-d')}}</li>
 			</ul>
 		</div>
 {% endif %}
 	<section>
-		<form action="" class="d-flex justify-content-center">
-			<div class="mb-3 border p-3">
-				<h5>Je postule Ici!</h5>
-				<textarea class="form-control"></textarea>
+			<div class="card">
+				<form action="" class="d-flex justify-content-center">
+						<div class="mb-3  p-3 card-body">
+							<h5 class="text-center">Je dépose ma candidature !</h5>
+							<textarea class="form-control"></textarea>
+							<span class="d-flex justify-content-center pt-3"><button class="btn btn-success">Envoyez</button></span>
+						</div>
+				</form>
 			</div>
-		</form>
 	</section>
 
 {% endblock %}

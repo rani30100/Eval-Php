@@ -4,13 +4,14 @@ namespace App\Form;
 
 
 use App\Entity\Offers;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class OffersType extends AbstractType
@@ -40,6 +41,15 @@ class OffersType extends AbstractType
                 'Intérim'=> 'Intérim',
                 'Alternance'=>'Alternance'
             ]
+        ])
+        ->add('salary', MoneyType::class, [
+            'divisor' => 100,
+            'scale' => 0,
+            'currency' => 'EUR',
+            'attr' => [
+                'min' => 400,
+                'max' => 5000,
+            ],
         ])
         ->add("Date_added",  DateType::class, [
             'label' => "Date d'ajout",

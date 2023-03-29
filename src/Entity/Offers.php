@@ -33,6 +33,9 @@ class Offers
     #[ORM\Column(length: 255)]
     private ?string $department = null;
 
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $salary = null;
+
 
     public function getId(): ?int
     {
@@ -111,6 +114,18 @@ class Offers
     public function setDepartment(string $department): self
     {
         $this->department = $department;
+
+        return $this;
+    }
+
+    public function getSalary(): ?int
+    {
+        return $this->salary;
+    }
+
+    public function setSalary(int $salary): self
+    {
+        $this->salary = $salary;
 
         return $this;
     }

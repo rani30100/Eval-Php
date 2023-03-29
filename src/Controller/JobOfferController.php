@@ -17,6 +17,8 @@ class JobOfferController extends AbstractController
     #[Route('/offer/{id}', name: 'app_job_offer')]
     public function index(Request $request, Offers $offer, OffersRepository $offerRepository): Response
     {
+            //cree une route pour la redirection
+            $path_home = $this->generateUrl('app_home');
             $form = $this->createForm(OffersType::class, $offer);
             $form->handleRequest($request);
     
@@ -26,8 +28,10 @@ class JobOfferController extends AbstractController
             }    
     
             return $this->render('offer/index.html.twig', [
+                //j'initie les variable crée
                 'offer' => $offer,
-                'form' => $form->createView(),
+                'path_home' => $path_home,
+                'form' => $form->createView()
             ]);
         }
     }
