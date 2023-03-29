@@ -27,7 +27,8 @@
 
 			<nav class="navbar navbar-expand-lg">
 				<div class="container-fluid">
-					<a class="navbar-brand text-white d-flex align-items-center" href="#"><ion-icon name="person-circle-sharp"></ion-icon>Espace Personnel |</a>
+					<a class="navbar-brand text-white d-flex align-items-center" href="#">
+						<ion-icon name="person-circle-sharp"></ion-icon>Espace Personnel |</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -43,56 +44,56 @@
 			<main>
 				<section class="search shadow p-3 mb-5 bg-body-tertiary rounded mt-2">
 					{{ include('/search_form.html.twig') }}
-					</section>
-				</div>
-
-				<section class="my-offers ">
-					<select class="form-select custom-select element mb-2 border border-2" aria-label="Default select example">
-						<option selected>Trier Par</option>
-						<option value="1">Ordre Croissant</option>
-					</select>
-
-					<h2 class="color element">Nombres d'offres | Villes</h2>
-
-					{% for offer in offers %}
-						{# {% for offer in offers %} #}
-						<div class="d-flex flex-row border border-2 border-dark-subtle btn offre rounded-3 shadow-sm p-3 mb-5">
-							<div class="img">
-								<img src="img/logo.png" alt="">
-							</div>
-
-							<div class="text-start">
-								<h3>{{offer.title}}</h3>
-								<p>Département |
-									{{offer.department}}</p>
-								<p>{{offer.description|raw}}</p>
-
-								<p class="fw-bold">Date de mise en ligne :
-									{{offer.getDateAdded()|date('Y-m-d')}}</p>
-								<p class="fw-bold">Cett offre expire le :
-									{{offer.getExpirationDate()|date('Y-m-d')}}</p>
-
-							</div>
-							<div class="poste">
-								<h6>Poste Occupé</h6>
-								<p>{{offer.type}}</p>
-							</div>
-						</div>
-					{% endfor %}
-					<div class="navigation d-flex justify-content-center">
-						{{ knp_pagination_render(pagination) }}
-					</div>
 				</section>
-			</main>
-		{% endblock %}
-		<script>
-		const type = document.getElementById('offers_search_type');
-		function onChange() {
-			form.submit();
-		}
+			</div>
 
-		type.addEventListener('change', onChange);
-		
-		</script>
-	</body>
-</html>
+			<section class="my-offers ">
+				<select class="form-select custom-select element mb-2 border border-2" aria-label="Default select example">
+					<option selected>Trier Par</option>
+					<option value="1">Ordre Croissant</option>
+				</select>
+
+				<h2 class="color element">Nombres d'offres | Villes</h2>
+
+				{% for offer in offers %}
+					<div class="d-flex flex-row border border-2 border-dark-subtle btn offre rounded-3 shadow-sm p-3 mb-5 position-relative">
+						<div class="img">
+							<img src="img/logo.png" alt="">
+						</div>
+
+						<div class="text-start">
+							<h3>{{offer.title}}</h3>
+							<p>Département |
+								{{offer.department}}</p>
+							<p>{{offer.description|raw}}</p>
+
+							<p class="fw-bold">Date de mise en ligne :
+								{{offer.getDateAdded()|date('Y-m-d')}}</p>
+							<p class="fw-bold">Cett offre expire le :
+								{{offer.getExpirationDate()|date('Y-m-d')}}</p>
+							<span class="btn btn-outline-warning"><a href="/job/offer" class="stretched-link color">Voir l'offre</a></span>
+							 
+
+						</div>
+						<div class="poste">
+							<h6>Poste Occupé</h6>
+							<p>{{offer.type}}</p>
+						</div>
+					</div>
+				{% endfor %}
+				<div class="navigation d-flex justify-content-center">
+					{{ knp_pagination_render(pagination) }}
+				</div>
+			</section>
+		</body>
+	</html>
+</main>{% endblock %}<script>
+const type = document.getElementById('offers_search_search');
+const form = document.querySelector('form_search')
+
+function onChange(event) {
+console.log("heyy");
+event.target.form.submit();
+}
+
+type.addEventListener('change', onChange);</script></body></html>

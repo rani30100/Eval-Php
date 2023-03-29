@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $offer = new Offers;
             $offer
-            ->setTitle($faker->firstName() . '_' . $faker->lastName())
+            ->setTitle($faker->jobTitle())
             // ->setAvatar($faker->imageUrl(640, 480, 'person', true))
             ->setDescription($faker->text())
             ->setDateAdded($faker->dateTime())

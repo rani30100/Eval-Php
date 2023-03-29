@@ -56,6 +56,13 @@ class OffersRepository extends ServiceEntityRepository
                 ->setParameter('department', $criteria['department']);
         }
 
+         if(!empty($criteria['search'])){
+             $qb
+             ->andWhere('o.Title LIKE :search')
+             ->setParameter('search', '%'.$criteria ['search'].'%')
+             ;
+         }
+
         return $qb
             ->getQuery();
     }
