@@ -44,14 +44,12 @@
 			<main>
 				<section class="search shadow p-3 mb-5 bg-body-tertiary rounded mt-2">
 					{{ include('/search_form.html.twig') }}
+					{{ knp_pagination_sortable(pagination, 'Trier Par ordre Croissant', 'o.id', {'class': 'btn border border-3 bg-primary-subtle hover'}) }}
+
 				</section>
 			</div>
 
 			<section class="my-offers ">
-				<select name = "sort" class="form-select custom-select element mb-2 border border-2" aria-label="Default select example">
-					<option selected>Trier Par</option>
-					<option value="1">Ordre Croissant</option>
-				</select>
 
 				<h2 class="color element">Nombres d'offres | Villes</h2>
 
@@ -87,16 +85,23 @@
 			</section>
 		</body>
 	</html>
-</main>{% endblock %}<script>
+</main>
+{% endblock %}
+
+<script>
 const type = document.getElementById('offers_search_search');
 const form = document.querySelector('form_search')
+// const tri = document.getElementById('tri_form_tri')
 
 function onChange(event) {
-console.log("heyy");
+
 event.target.form.submit();
+console.log('le tri marche  ');
 }
 
 type.addEventListener('change', onChange);
+// tri.addEventListener('change', onChange);
+
 
 </script>
 </body>

@@ -56,41 +56,41 @@ class OffersRepository extends ServiceEntityRepository
 
                 ->setParameter('department', $criteria['department']);
         }
+     
 
-         if(!empty($criteria['search'])){
-             $qb
-             ->andWhere('o.Title LIKE :search')
-             ->setParameter('search', '%'.$criteria ['search'].'%')
-             ;
-         }
+        if (!empty($criteria['search'])) {
+            $qb
+                ->andWhere('o.Title LIKE :search')
+                ->setParameter('search', '%' . $criteria['search'] . '%');
+        }
 
-            $qb->orderBy('o.id','DESC')    ;
+        $qb->orderBy('o.id', 'DESC');
         return $qb->getQuery();
     }
 
-        //  if(!empty($criteria['search'])){
-        //      $qb
-        //      ->andWhere('o.name LIKE :search')
-        //      ->setParameter('search', '%'.$criteria ['search'].'%')
-        //      ;
-        //  }
+    //  if(!empty($criteria['search'])){
+    //      $qb
+    //      ->andWhere('o.name LIKE :search')
+    //      ->setParameter('search', '%'.$criteria ['search'].'%')
+    //      ;
+    //  }
 
 
 
     //    /**
     //     * @return Offers[] Returns an array of Offers objects
     //     */
-    //    public function findByExampleField($value): array
+    //    public function findByExampleField2($criteriaTri)
     //    {
-    //        return $this->createQueryBuilder('o')
-    //            ->andWhere('o.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('o.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    //     $qb = $this->createQueryBuilder('o');
+    //        if(!empty($criteriaTri['tri'])){
+    //            $qb
+    //            ->andWhere('o.Title LIKE :search')
+    //            ->setParameter('search', '%'.$criteriaTri ['search'].'%')
+    //            ;
+    //         }
+    //         return $qb->getQuery();
+    //     }
 
     //    public function findOneBySomeField($value): ?Offers
     //    {

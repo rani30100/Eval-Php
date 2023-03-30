@@ -23,6 +23,7 @@ class OffersType extends AbstractType
             'label' => "Nom de l'offre"
         ])
         ->add('department', ChoiceType::class, [
+            'attr' => ['class' => ''],
             'choices'=>[
                 'Gard'=> 'Gard',
                 'Vaucluse'=> 'Vaucluse',

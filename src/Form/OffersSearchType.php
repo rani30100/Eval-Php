@@ -55,7 +55,19 @@ class OffersSearchType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Trouvez une offre...'
                 ]
-            ]);
+            ])
+            ->add('tri', ChoiceType::class, [
+                'label' => false,
+                'placeholder' => 'Trier Par',
+                'required' => false,
+                'choices' => [
+                    //clé => value (La value c'est ce qui rentre dans la base de donnée ecrit de la meme façon)
+                    'Ordre croissant' => 'asc',
+                    'Ordre décroissant'=> 'desc',
+    
+                ]
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
