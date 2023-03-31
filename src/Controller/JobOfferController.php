@@ -28,7 +28,7 @@ class JobOfferController extends AbstractController
 
         if ($form2->isSubmitted() && $form2->isValid()) {
             $offersApplicationRepository->save($application, true);
-            return $this->redirectToRoute('app_offer_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('offer/index.html.twig', [

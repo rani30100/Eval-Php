@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/application')]
 class OffersApplicationController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_offers_application_index', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'app_admin_application_index', methods: ['GET', 'POST'])]
     public function index(OffersApplicationRepository $offersApplicationRepository,Request $request): Response
     {
 
@@ -55,13 +55,13 @@ class OffersApplicationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_offers_application_show', methods: ['GET'])]
-    public function show(OffersApplication $offersApplication): Response
-    {
-        return $this->render('admin/offers_application/show.html.twig', [
-            'offers_application' => $offersApplication,
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_admin_offers_application_show', methods: ['GET'])]
+    // public function show(OffersApplication $offersApplication): Response
+    // {
+    //     return $this->render('admin/offers_application/show.html.twig', [
+    //         'offers_application' => $offersApplication,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_admin_offers_application_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, OffersApplication $offersApplication, OffersApplicationRepository $offersApplicationRepository): Response

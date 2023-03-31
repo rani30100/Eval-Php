@@ -42,13 +42,13 @@ class OffersController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_application_show', methods: ['GET'])]
-    public function show(OffersType $offers): Response
-    {
-        return $this->render('admin/application/show.html.twig', [
-            'offers' => $offers
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_application_show', methods: ['GET'])]
+    // public function show(OffersType $offers): Response
+    // {
+    //     return $this->render('admin/application/show.html.twig', [
+    //         'offers' => $offers
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_admin_offers_edit', methods: ['GET', 'POST'])]
     #[ParamConverter("offer", class:"App\Entity\Offers")]

@@ -3,7 +3,6 @@
 
 
 {% block table_content %}
-<a href="{{ path('app_admin_offers_application_new') }}" class="btn btn-outline-success">Créer une offre</a>
 
     <table class="table">
         <thead>
@@ -28,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune Candidature trouvé !<i class="fa-regular fa-face-scream"></i></td>
             </tr>
         {% endfor %}
         </tbody>
