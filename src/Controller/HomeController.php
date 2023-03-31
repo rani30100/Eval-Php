@@ -51,10 +51,10 @@ class HomeController extends AbstractController
         );
 
       return $this->render('home/index.html.twig', [
-    'controller_name' => 'HomeController',
-    'offers' => $pagination,
-    'pagination' => $pagination,
-    'search_form' => $form,
+        'controller_name' => 'HomeController',
+        'offers' => $pagination,
+        'pagination' => $pagination,
+        'search_form' => $form,
     
 ]);
 

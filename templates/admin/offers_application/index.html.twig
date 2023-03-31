@@ -1,0 +1,38 @@
+{% extends 'admin_with_table.html.twig' %}
+{% set title = 'Liste des Candidatures' %}
+
+
+{% block table_content %}
+<a href="{{ path('app_admin_offers_application_new') }}" class="btn btn-outline-success">Créer une offre</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offers_application in offers_applications %}
+            <tr>
+                <td>{{ offers_application.id }}</td>
+                <td>{{ offers_application.description }}</td>
+                <td>
+                    <form class="text-start pb-3" method="post" action="{{ path('app_admin_offers_application_delete', {'id': offers_application.id}) }}" onsubmit="return confirm('Êtes-vous sur de supprimer cet élément ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ offers_application.id) }}">
+                            <button class="btn btn-danger ">Supprimer</button>
+                    </form>
+                 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{# 
+    <a href="{{ path('app_admin_offers_application_new') }}">Create new</a> #}
+{% endblock %}

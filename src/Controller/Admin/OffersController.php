@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Offers;
+use App\Entity\OffersApplication;
 use App\Form\OffersType;
 use App\Repository\OffersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,6 +39,14 @@ class OffersController extends AbstractController
         return $this->renderForm('admin/offers/new.html.twig', [
             'offer' => $offer,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_application_show', methods: ['GET'])]
+    public function show(OffersType $offers): Response
+    {
+        return $this->render('admin/application/show.html.twig', [
+            'offers' => $offers
         ]);
     }
 

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffersApplication{% endblock %}
+
+{% block body %}
+    <h1>OffersApplication</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offers_application.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offers_application.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_offers_application_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_offers_application_edit', {'id': offers_application.id}) }}">edit</a>
+
+    {{ include('admin/offers_application/_delete_form.html.twig') }}
+{% endblock %}

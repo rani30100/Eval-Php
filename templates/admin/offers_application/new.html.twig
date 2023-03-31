@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New OffersApplication{% endblock %}
+
+{% block body %}
+    <h1>Create new OffersApplication</h1>
+
+    {{ include('admin/offers_application/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_offers_application_index') }}">back to list</a>
+{% endblock %}
