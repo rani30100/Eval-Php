@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Offers;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,7 +40,6 @@ class OffersRepository extends ServiceEntityRepository
         }
     }
 
-
     public function findByExampleField($criteria)
     {
         $qb = $this->createQueryBuilder('o');
@@ -56,15 +56,20 @@ class OffersRepository extends ServiceEntityRepository
 
                 ->setParameter('department', $criteria['department']);
         }
-     
+
 
         if (!empty($criteria['search'])) {
             $qb
                 ->andWhere('o.Title LIKE :search')
                 ->setParameter('search', '%' . $criteria['search'] . '%');
         }
+        
+        $date = new \DateTime("now");
+        $qb->orderBy('o.id', 'DESC')
 
-        $qb->orderBy('o.id', 'DESC');
+        ->andWhere('o.expiration_date > :expiration')
+        ->setParameter('expiration', $date);
+
         return $qb->getQuery();
     }
 

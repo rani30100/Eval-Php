@@ -22,26 +22,27 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(OffersRepository $offersRepository, PaginatorInterface $paginator, Request $request): Response
     {
-       //methode get
+        //methode get
         $offerId = $request->query->get('offerId');
-        
+
         if ($offerId !== null) {
             return $this->redirect('/offres/' . $offerId);
         }
         //-------------------------------------------------
-        
+
         //mes form
         $form = $this->createForm(OffersSearchType::class);
-   
+
         //--------------------------------------------------
-       
+
         // if ( $tri->handleRequest($request)->isSubmitted() && $tri->isValid()) {
-        //         $data = $tri->getData();
-            
+        //         $data = $tri->getData$form->handleRequest($request)();
+
         // }
-            if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
-                $criteria = $form->getData();
-                
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $criteria = $form->getData();
         }
 
         $pagination = $paginator->paginate(
@@ -50,13 +51,12 @@ class HomeController extends AbstractController
             15 /*limit per page*/
         );
 
-      return $this->render('home/index.html.twig', [
-        'controller_name' => 'HomeController',
-        'offers' => $pagination,
-        'pagination' => $pagination,
-        'search_form' => $form,
-    
-]);
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'offers' => $pagination,
+            'pagination' => $pagination,
+            'search_form' => $form,
 
+        ]);
     }
 }
