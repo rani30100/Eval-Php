@@ -25,8 +25,11 @@ class JobOfferController extends AbstractController
         $path_home = $this->generateUrl('app_home');
         $form2 = $this->createForm(OffersApplicationType::class, $application);
         $form2->handleRequest($request);
-
+        
         if ($form2->isSubmitted() && $form2->isValid()) {
+            //d'abord on relie la candidature à l'offre
+            $application->setOffers($offer);
+            //ensuite on sauvegrade le form et on redirige
             $offersApplicationRepository->save($application, true);
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }

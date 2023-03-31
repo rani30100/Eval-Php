@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\OffersApplicationRepository;
+use App\Entity\Offers;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use App\Repository\OffersApplicationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: OffersApplicationRepository::class)]
 class OffersApplication
@@ -16,6 +19,11 @@ class OffersApplication
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
+
+    #[ORM\ManyToOne(inversedBy: 'offersApplications')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Offers $offers = null;
+
 
     public function getId(): ?int
     {
@@ -33,4 +41,17 @@ class OffersApplication
 
         return $this;
     }
+
+    public function getOffers(): ?Offers
+    {
+        return $this->offers;
+    }
+
+    public function setOffers(?Offers $offers): self
+    {
+        $this->offers = $offers;
+
+        return $this;
+    }
+
 }

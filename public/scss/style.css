@@ -90,4 +90,28 @@ body main {
 
 .color {
   color: #ff5950;
+}
+
+@media (max-width: 900px) {
+  .img {
+    display: none;
+  }
+  .poste {
+    display: none;
+  }
+  .text-start {
+    text-align: center;
+  }
+  .blockOffres {
+    justify-content: center;
+  }
+  .block-text {
+    text-align: left;
+  }
+  .content_offer {
+    width: -moz-fit-content;
+    width: fit-content;
+    text-align: none;
+    margin-left: none;
+  }
 }/*# sourceMappingURL=style.css.map */

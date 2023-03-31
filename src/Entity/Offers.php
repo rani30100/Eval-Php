@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\OffersRepository;
@@ -36,6 +38,13 @@ class Offers
     #[ORM\Column(type: Types::INTEGER)]
     private ?int $salary = null;
 
+    #[ORM\OneToMany(mappedBy: 'offers', targetEntity: OffersApplication::class, orphanRemoval: true)]
+    private Collection $offersApplications;
+
+    public function __construct()
+    {
+        $this->offersApplications = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -126,6 +135,36 @@ class Offers
     public function setSalary(int $salary): self
     {
         $this->salary = $salary;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OffersApplication>
+     */
+    public function getOffersApplications(): Collection
+    {
+        return $this->offersApplications;
+    }
+
+    public function addOffersApplication(OffersApplication $offersApplication): self
+    {
+        if (!$this->offersApplications->contains($offersApplication)) {
+            $this->offersApplications->add($offersApplication);
+            $offersApplication->setOffers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffersApplication(OffersApplication $offersApplication): self
+    {
+        if ($this->offersApplications->removeElement($offersApplication)) {
+            // set the owning side to null (unless already changed)
+            if ($offersApplication->getOffers() === $this) {
+                $offersApplication->setOffers(null);
+            }
+        }
 
         return $this;
     }

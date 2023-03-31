@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block table_content %}
+<div class="d-flex justify-content-between">
 	<a href="{{ path('app_admin_offers_new') }}" class="btn btn-outline-success">Créer une offre</a>
 	<a href="{{ path('app_admin_application_index') }}" class="btn btn-warning">Voir les Candidatures</a>
+</div>
 	{# <a href="{{ path('app_admin_application') }}"> #}
 	<table class="table">
 		<thead>
