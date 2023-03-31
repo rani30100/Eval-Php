@@ -51,7 +51,8 @@
 				<form action="{{ path('app_admin_offers_application_index')}}" method="POST" class="d-flex justify-content-center">
 						<div class="mb-3  p-3 card-body">
 							<h5 class="text-center">Je dépose ma candidature !</h5>
-							{{ include('/admin/offers_application/_form.html.twig') }}
+							{{ form_start(form2, {'attr': {'class': 'form'}}) }}
+							{{ form_end(form2) }}
 							<span class="d-flex justify-content-center pt-3"><button class="btn btn-success">Envoyez</button></span>
 						</div>
 				</form>
