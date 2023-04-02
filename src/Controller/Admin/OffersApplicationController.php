@@ -26,7 +26,7 @@ class OffersApplicationController extends AbstractController
         if ($formApplication->isSubmitted() && $formApplication->isValid()) {
             $offersApplicationRepository->save($offersApplication, true);
 
-            return $this->redirectToRoute('app_admin_offers_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_application_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/offers_application/index.html.twig', [
@@ -88,6 +88,6 @@ class OffersApplicationController extends AbstractController
             $offersApplicationRepository->remove($offersApplication, true);
         }
 
-        return $this->redirectToRoute('app_admin_offers_application_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin_application_index', [], Response::HTTP_SEE_OTHER);
     }
 }
